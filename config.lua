@@ -13,7 +13,17 @@ Config.MenuItems = {
                 type = 'client',
                 event = 'qb-phone:client:GiveContactDetails',
                 shouldClose = true
-            }, {
+            }, 
+            {
+                id = 'revivep',
+                title = 'Revive',
+                icon = 'user-md',
+                type = 'client',
+                event = 'hospital:client:RevivePlayer',
+                TaskPlayAnim(test1, "mini@cpr@char_a@cpr_str","cpr_pumpchest",1.0, 1.0, -1, 9, 1.0, 0, 0, 0),
+                shouldClose = true
+            },
+            {
                 id = 'getintrunk',
                 title = 'Get In Trunk',
                 icon = 'car',
@@ -458,9 +468,31 @@ Config.MenuItems = {
                         shouldClose = false
                     }
                 }
-            }
+            },
+            {
+                id = 'engine',
+                title = 'Toggle Engine',
+                icon = 'car',
+                type = 'client',
+                event = 'vehiclekeys:client:ToggleEngine',
+                shouldClose = true
+            },
+            {
+                id = 'flipvehicle',
+                title = 'flip vehicle',
+                icon = 'truck-pickup',
+                type = 'client',
+                event = 'qb-radialmenu:client:flipvehicle',
+                shouldClose = true
+             }
         }
     },
+    [4] = {
+        id = 'jobinteractions',
+        title = 'Work',
+        icon = 'briefcase',
+        items = {}
+    }
 }
 
 Config.JobInteractions = {
@@ -501,6 +533,13 @@ Config.JobInteractions = {
             event = 'police:client:EscortPlayer',
             shouldClose = true
         }, {
+            id='duty',
+            title = 'Toggle Duty',
+            icon = 'id-card',
+            type = 'server',
+            event = 'QBCore:ToggleDuty',
+            shouldClose = true
+        },{
             id = 'stretcheroptions',
             title = 'Stretcher',
             icon = 'procedures',
@@ -545,7 +584,14 @@ Config.JobInteractions = {
             type = 'client',
             event = 'qb-taxi:client:DoTaxiNpc',
             shouldClose = true
-        }
+        },{
+            id='duty',
+            title = 'Toggle Duty',
+            icon = 'id-card',
+            type = 'server',
+            event = 'QBCore:ToggleDuty',
+            shouldClose = true
+        },
     },
     ["tow"] = {
         {
@@ -562,7 +608,14 @@ Config.JobInteractions = {
             type = 'client',
             event = 'qb-tow:client:TowVehicle',
             shouldClose = true
-        }
+        }, {
+            id='duty',
+            title = 'Toggle Duty',
+            icon = 'id-card',
+            type = 'server',
+            event = 'QBCore:ToggleDuty',
+            shouldClose = true
+        },
     },
     ["mechanic"] = {
         {
@@ -572,7 +625,15 @@ Config.JobInteractions = {
             type = 'client',
             event = 'qb-tow:client:TowVehicle',
             shouldClose = true
-        }
+        },
+        {
+            id='duty',
+            title = 'Toggle Duty',
+            icon = 'id-card',
+            type = 'server',
+            event = 'QBCore:ToggleDuty',
+            shouldClose = true
+        },
     },
     ["police"] = {
         {
@@ -580,9 +641,18 @@ Config.JobInteractions = {
             title = 'Emergency button',
             icon = 'bell',
             type = 'client',
-            event = 'police:client:SendPoliceEmergencyAlert',
+            event = 'police:client:SendEmergencyMessage',
             shouldClose = true
-        }, {
+        },{
+            id='duty',
+            title = 'Toggle Duty',
+            icon = 'id-card',
+            type = 'server',
+            event = 'QBCore:ToggleDuty',
+            shouldClose = true
+        },       
+        
+        {
             id = 'checkvehstatus',
             title = 'Check Tune Status',
             icon = 'info-circle',
@@ -662,14 +732,14 @@ Config.JobInteractions = {
                     title = 'Gate',
                     icon = 'torii-gate',
                     type = 'client',
-                    event = 'police:client:spawnBarrier',
+                    event = 'police:client:spawnBarier',
                     shouldClose = false
                 }, {
                     id = 'spawnschotten',
                     title = 'Speed Limit Sign',
                     icon = 'sign',
                     type = 'client',
-                    event = 'police:client:spawnRoadSign',
+                    event = 'police:client:spawnSchotten',
                     shouldClose = false
                 }, {
                     id = 'spawntent',
@@ -701,6 +771,45 @@ Config.JobInteractions = {
                     shouldClose = false
                 }
             }
+        },
+        {
+            id = 'vehiclelivery',
+            title = 'Vehicle Livery',
+            icon = 'minus',
+            items = {
+                {
+                    id = 'livery0',
+                    title = 'No Livery',
+                    icon = 'minus',
+                    type = 'client',
+                    event = 'qb-radialmenu:client:ChangeLivery0',
+                    shouldClose = true
+                }, 
+                {
+                    id = 'livery1',
+                    title = 'Livery 1',
+                    icon = 'minus',
+                    type = 'client',
+                    event = 'qb-radialmenu:client:ChangeLivery1',
+                    shouldClose = true
+                }, 
+                {
+                    id = 'livery2',
+                    title = 'Livery 2',
+                    icon = 'minus',
+                    type = 'client',
+                    event = 'qb-radialmenu:client:ChangeLivery2',
+                    shouldClose = true
+                }
+            }
+        },
+        {
+            id = 'revivep',
+            title = 'Revive',
+            icon = 'user-md',
+            type = 'client',
+            event = 'hospital:client:RevivePlayer',
+            shouldClose = true
         }
     },
     ["hotdog"] = {
@@ -711,33 +820,54 @@ Config.JobInteractions = {
             type = 'client',
             event = 'qb-hotdogjob:client:ToggleSell',
             shouldClose = true
-        }
+        },
+        {
+            id='duty',
+            title = 'Toggle Duty',
+            icon = 'id-card',
+            type = 'server',
+            event = 'QBCore:ToggleDuty',
+            shouldClose = true
+        },
+    },
+    ["cardealer"] = {
+        {
+            id='duty',
+            title = 'Toggle Duty',
+            icon = 'id-card',
+            type = 'server',
+            event = 'QBCore:ToggleDuty',
+            shouldClose = true
+        },
     }
+    -- ["taxi"] = {
+
+    -- },
 }
 
 Config.TrunkClasses = {
-    [0] = {allowed = true, x = 0.0, y = -1.5, z = 0.0}, -- Coupes
-    [1] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Sedans
-    [2] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- SUVs
-    [3] = {allowed = true, x = 0.0, y = -1.5, z = 0.0}, -- Coupes
-    [4] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Muscle
-    [5] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Sports Classics
-    [6] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Sports
-    [7] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Super
-    [8] = {allowed = false, x = 0.0, y = -1.0, z = 0.25}, -- Motorcycles
-    [9] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Off-road
-    [10] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Industrial
-    [11] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Utility
-    [12] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Vans
-    [13] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Cycles
-    [14] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Boats
-    [15] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Helicopters
-    [16] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Planes
-    [17] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Service
-    [18] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Emergency
-    [19] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Military
-    [20] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Commercial
-    [21] = {allowed = true, x = 0.0, y = -1.0, z = 0.25} -- Trains
+    [0] = {allowed = true, x = 0.0, y = -1.5, z = 0.0}, -- Coupes  
+    [1] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Sedans  
+    [2] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- SUVs  
+    [3] = {allowed = true, x = 0.0, y = -1.5, z = 0.0}, -- Coupes  
+    [4] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Muscle  
+    [5] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Sports Classics  
+    [6] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Sports  
+    [7] = {allowed = true, x = 0.0, y = -2.0, z = 0.0}, -- Super  
+    [8] = {allowed = false, x = 0.0, y = -1.0, z = 0.25}, -- Motorcycles  
+    [9] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Off-road  
+    [10] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Industrial  
+    [11] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Utility  
+    [12] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Vans  
+    [13] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Cycles  
+    [14] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Boats  
+    [15] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Helicopters  
+    [16] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Planes  
+    [17] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Service  
+    [18] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Emergency  
+    [19] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Military  
+    [20] = {allowed = true, x = 0.0, y = -1.0, z = 0.25}, -- Commercial  
+    [21] = {allowed = true, x = 0.0, y = -1.0, z = 0.25} -- Trains  
 }
 
 Config.ExtrasEnabled = true
@@ -751,14 +881,14 @@ Config.Commands = {
         Name = "Torso"
     },
     ["gloves"] = {
-        Func = function() ToggleClothing("gloves") end,
+        Func = function() ToggleClothing("Gloves") end,
         Sprite = "gloves",
         Desc = "Take your gloves off/on",
         Button = 2,
         Name = "Gloves"
     },
     ["visor"] = {
-        Func = function() ToggleProps("visor") end,
+        Func = function() ToggleProps("Visor") end,
         Sprite = "visor",
         Desc = "Toggle hat variation",
         Button = 3,
@@ -786,7 +916,7 @@ Config.Commands = {
         Name = "Vest"
     },
     ["hair"] = {
-        Func = function() ToggleClothing("hair") end,
+        Func = function() ToggleClothing("Hair") end,
         Sprite = "hair",
         Desc = "Put your hair up/down/in a bun/ponytail.",
         Button = 7,
@@ -844,7 +974,7 @@ Config.Commands = {
     }
 }
 
-local bags = {[40] = true, [41] = true, [44] = true, [45] = true}
+local Bags = {[40] = true, [41] = true, [44] = true, [45] = true}
 
 Config.ExtraCommands = {
     ["pants"] = {
@@ -883,14 +1013,14 @@ Config.ExtraCommands = {
             local Bag = GetPedDrawableVariation(PlayerPedId(), 5)
             local BagOff = LastEquipped["Bagoff"]
             if LastEquipped["Bagoff"] then
-                if bags[BagOff.Drawable] then
+                if Bags[BagOff.Drawable] then
                     return "bagoff"
                 else
                     return "paraoff"
                 end
             end
             if Bag ~= 0 then
-                if bags[Bag] then
+                if Bags[Bag] then
                     return "bagoff"
                 else
                     return "paraoff"
